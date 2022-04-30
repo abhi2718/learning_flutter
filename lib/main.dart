@@ -13,26 +13,75 @@ class HomeScreen extends StatelessWidget {
           width: double.infinity,
           height: double.infinity,
           child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CustomElevatedButton(
-              onPressed: () {
-                print("Learning Flutter");
-              },
-              title:'Elevated button',
-              btnWidth:240,
-              btnHeight:60,
-              backgroundColor:Colors.green,
-              titleColor:Colors.white,
-              elevation: 6,
-              fontWeight: FontWeight.bold,
-              borderRadius:20,
-            )
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CustomElevatedButton(
+                onPressed: () {
+                  print("Learning Flutter");
+                },
+                title: 'Elevated button',
+                btnWidth: 240,
+                btnHeight: 60,
+                backgroundColor: Colors.green,
+                titleColor: Colors.white,
+                elevation: 6,
+                fontWeight: FontWeight.bold,
+                borderRadius: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: CustomOutlinedButton(
+                  onPressed: () {
+                    print("HI Flutter");
+                  },
+                  title: 'outlined Button',
+                  btnHeight: 60,
+                  btnWidth: 240,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  borderRadius: 40,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(16),
+                child: CustomTextButton(
+                  onPressed: () {
+                    print("HI Flutter");
+                  },
+                  title: 'Text Button',
+                  btnHeight: 20,
+                  btnWidth: 100,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              CustomIconButton(
+                  iconName: Icons.phone_android_sharp,
+                  iconSize: 40,
+                  iconColor: Colors.blue,
+                  onPressed: () {
+                    print("You Pressed me!");
+                  }),
+              ElevatedIconButton(
+                  title: "Elevated Icon Button",
+                  iconName: Icons.settings,
+                  iconColor: Colors.black,
+                  iconSize: 40,
+                  onPressed: () {
+                    print('HI Abhishek Singh');
+                  },
+                  backgroundColor:Colors.green,
+                  titleColor:Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  elevation:3,
+                  ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+//https://www.youtube.com/watch?v=wvhkomzr0dU&t=75s
