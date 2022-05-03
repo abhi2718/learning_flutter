@@ -191,51 +191,197 @@ class ElevatedIconButton extends StatelessWidget {
   final double borderRadius;
   final double horizontalPadding;
   final double verticalPadding;
-  ElevatedIconButton({
-    required this.title, 
-    required this.iconName,
-    required this.onPressed,
-    this.iconColor=Colors.white,
-    this.iconSize=30,
-    this.btnWidth = 250,
-    this.btnHeight = 80,
-    this.backgroundColor = Colors.blue,
-    this.titleColor = Colors.white,
-    this.elevation = 1,
-    this.fontSize = 16,
-    this.fontWeight = FontWeight.normal,
-    this.fontFamily = '',
-    this.borderRadius = 16,
-    this.horizontalPadding = 10,
-    this.verticalPadding = 10,
-  });
+  final String iconPostion;
+  ElevatedIconButton(
+      {required this.title,
+      required this.iconName,
+      required this.onPressed,
+      this.iconColor = Colors.white,
+      this.iconSize = 30,
+      this.btnWidth = 250,
+      this.btnHeight = 80,
+      this.backgroundColor = Colors.blue,
+      this.titleColor = Colors.white,
+      this.elevation = 1,
+      this.fontSize = 16,
+      this.fontWeight = FontWeight.normal,
+      this.fontFamily = '',
+      this.borderRadius = 16,
+      this.horizontalPadding = 10,
+      this.verticalPadding = 10,
+      this.iconPostion = "left"});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: iconPostion == "left"
+            ? Icon(
+                iconName,
+                color: iconColor,
+                size: iconSize,
+              )
+            : Text(title),
+        label: iconPostion == "left"
+            ? Text(title)
+            : Icon(
+                iconName,
+                color: iconColor,
+                size: iconSize,
+              ),
+        style: ElevatedButton.styleFrom(
+            //fixedSize: Size(btnWidth, btnHeight),
+            textStyle: TextStyle(
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              fontFamily: fontFamily,
+            ),
+            primary: backgroundColor,
+            onPrimary: titleColor,
+            elevation: elevation,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(borderRadius),
+            ),
+            padding: EdgeInsets.symmetric(
+              vertical: verticalPadding,
+              horizontal: horizontalPadding,
+            )));
+  }
+}
+
+class CustomOutlinedIconButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+  final Color titleColor;
+  final double btnWidth;
+  final double btnHeight;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final String fontFamily;
+  final double borderRadius;
+  final double borderWidth;
+  final Color borderColor;
+  final double horizontalPadding;
+  final double verticalPadding;
+  final IconData iconName;
+  final Color iconColor;
+  final double iconSize;
+  final String iconPostion;
+  CustomOutlinedIconButton(
+      {
+      required this.onPressed,
+      required this.title,
+      this.btnWidth = 100,
+      this.btnHeight = 50,
+      this.titleColor = Colors.black,
+      this.fontSize = 16,
+      this.fontWeight = FontWeight.normal,
+      this.fontFamily = '',
+      this.borderRadius = 16,
+      this.borderWidth = 1,
+      this.borderColor = Colors.blue,
+      this.horizontalPadding = 2,
+      this.verticalPadding = 2,
+      required this.iconName,
+      this.iconColor = Colors.white,
+      this.iconSize = 16,
+      this.iconPostion = "left"});
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton.icon(
+      icon: iconPostion == "left"
+          ? Icon(
+              iconName,
+              color: iconColor,
+              size: iconSize,
+            )
+          : Text(title),
+      label: iconPostion == "left"
+          ? Text(title)
+          : Icon(
+              iconName,
+              color: iconColor,
+              size: iconSize,
+            ),
       onPressed: onPressed,
-      icon:Icon(iconName,
-      color:iconColor,
-      size: iconSize,
-      ),
-      label: Text(title),
-      style:ElevatedButton.styleFrom(
-        //fixedSize: Size(btnWidth, btnHeight),
+      style: OutlinedButton.styleFrom(
+        primary: titleColor,
+        fixedSize: Size(btnWidth, btnHeight),
         textStyle: TextStyle(
           fontSize: fontSize,
           fontWeight: fontWeight,
           fontFamily: fontFamily,
         ),
-        primary: backgroundColor,
-        onPrimary: titleColor,
-        elevation: elevation,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
+        ),
+        side: BorderSide(
+          width: borderWidth,
+          color: borderColor,
         ),
         padding: EdgeInsets.symmetric(
           vertical: verticalPadding,
           horizontal: horizontalPadding,
-        )
-      )
+        ),
+      ),
+    );
+  }
+}
+
+
+class CustomTextIconButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+  final Color titleColor;
+  final double btnWidth;
+  final double btnHeight;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final String fontFamily;
+  final IconData iconName;
+  final Color iconColor;
+  final double iconSize;
+  final String iconPostion;
+  CustomTextIconButton({
+    required this.onPressed,
+    required this.title,
+    this.btnWidth = 100,
+    this.btnHeight = 50,
+    this.titleColor = Colors.black,
+    this.fontSize = 16,
+    this.fontWeight = FontWeight.normal,
+    this.fontFamily = '',
+    required this.iconName,
+    this.iconColor = Colors.white,
+    this.iconSize = 16,
+    this.iconPostion = "left"
+  });
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+      icon: iconPostion == "left"
+          ? Icon(
+              iconName,
+              color: iconColor,
+              size: iconSize,
+            )
+          : Text(title),
+      label: iconPostion == "left"
+          ? Text(title)
+          : Icon(
+              iconName,
+              color: iconColor,
+              size: iconSize,
+            ),
+      onPressed: onPressed,
+      style: TextButton.styleFrom(
+        primary: titleColor,
+        fixedSize: Size(btnWidth, btnHeight),
+        textStyle: TextStyle(
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          fontFamily: fontFamily,
+        ),
+      ),
     );
   }
 }

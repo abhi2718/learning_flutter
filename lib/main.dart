@@ -76,7 +76,39 @@ class HomeScreen extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   elevation:3,
+                  iconPostion: "right",
                   ),
+                  Container(child:CustomOutlinedIconButton(
+                  iconName: Icons.settings,
+                  iconColor: Colors.black,
+                  iconPostion: "right",
+                  iconSize: 40,
+                     onPressed: () {
+                    print("HI Flutter");
+                  },
+                  title: 'outlined Icon Button',
+                  btnHeight: 60,
+                  btnWidth: 280,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  borderRadius: 40,
+                  ),
+                  margin:const EdgeInsets.only(top:20),
+                  ),
+                  CustomTextIconButton(
+                  iconName: Icons.settings,
+                  iconColor: Colors.blue,
+                  iconPostion: "right",
+                  iconSize: 20,
+                    onPressed: () {
+                    print("HI Flutter");
+                  },
+                  title: 'Text Button',
+                  btnHeight: 20,
+                  btnWidth: 180,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  )
             ],
           ),
         ),
